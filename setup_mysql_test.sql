@@ -8,7 +8,7 @@
 
 
 -- Create database
-CREATE DATABASE IF NOT EXISTS hbnh_test_db;
+CREATE DATABASE IF NOT EXISTS hbnb_test_db;
 
 --Add new user
 CREATE USER IF NOT EXISTS 'hbnb_test'@'localhost' IDENTIFIED BY 'hbnb_test_pwd';
