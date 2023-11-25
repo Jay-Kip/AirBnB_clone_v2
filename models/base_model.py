@@ -54,8 +54,7 @@ class BaseModel:
         return dictionary
 
     def delete(self):
-        """
-        
+        """deletes the obj
         """
         from models import storage
         storage.delete(self)
