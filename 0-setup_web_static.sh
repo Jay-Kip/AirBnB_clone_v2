@@ -15,7 +15,15 @@ sudo mkdir /data/web_static/shared/
 sudo mkdir /data/web_static/releases/test/
 
 # Create html file
-sudo echo "Hello Software Engineer :)" >>  /data/web_static/releases/test/index.html
+# sudo echo "Hello Software Engineer :)" >>  /data/web_static/releases/test/index.html
+sudo touch /data/web_static/releases/test/index.html
+sudo echo "<html>
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
+</html>" | sudo tee /data/web_static/releases/test/index.html
 
 # Create a symbolic link
 sudo ln -s -f /data/web_static/releases/current  /data/web_static/releases/test/
