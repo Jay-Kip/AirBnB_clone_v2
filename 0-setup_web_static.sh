@@ -1,50 +1,30 @@
 #!/usr/bin/env bash
-# Bash script that sets up your web servers for the deployment of web_static.
+#Bash script that sets up your web servers for the deployment of web_static
 
+sudo apt-get update
 
-# install nginx iif i does not exist
+sudo apt-get install nginx
 
-if !	command -v nginx &> /dev/null;	then
-	apt-get update
-	apt-get -y install nginx
-fi
+sudo ufw allow 'Nginx HTTP'
 
-# Create folders if they dont exist
+# Create directories
+sudo mkdir /data/
+sudo mkdir /data/web_static/
+sudo mkdir /data/web_static/releases/
+sudo mkdir /data/web_static/shared/
+sudo mkdir /data/web_static/releases/test/
 
-mkdir -p /data/web_static/{releases/test,shared}
+# Create html file
+sudo echo "Hello Software Engineer :)" >>  /data/web_static/releases/test/index.html
 
-# Create test HTML file
+# Create a symbolic link
+sudo ln -s -f /data/web_static/releases/current  /data/web_static/releases/test/
 
-echo "Hello world!" > /data/web_static/releases/test/index.html
+#Change ownership of data folder to ubuntu
+sudo chown -R ubuntu:ubuntu /data/
 
-# Create or recreate a symbolic link
-
-if [	-L /data/web_static/current	];	then
-	rm /data/web_static/current
-fi
-ln -s /data/web_static/releases/test /data/web_static/current
-
-# Give ownership of /data/ folder to ubuntu user and group recursively
-
-chown -R ubuntu:ubuntu /data/
-
-# Update nginx
-
-config_file="/etc/nginx/sites-available/default"
-
-# Remove existing config from hbnb_static if it exists
-
-sed -i '/location \/hbnb_static {/,/}/d'	config_file
-
-# Add new config file for hbnb_static
-
-echo "
-	location /hbnb_tatic {
-	alias /data/web_static/current/;
-	index index.html;
-}
-" >> $config_file
+# Update nginx config
+sudo sed -i '/listen 80 default_server/a location /hbnb_static { alias /data/web_static/current/;}' /etc/nginx/sites-enabled/default
 
 # Restart nginx
-
-service nginx restart
+sudo service nginx restart
