@@ -8,11 +8,11 @@ sudo apt-get install nginx
 sudo ufw allow 'Nginx HTTP'
 
 # Create directories
-sudo -p mkdir /data/
-sudo -p mkdir /data/web_static/
-sudo -p mkdir /data/web_static/releases/
-sudo -p mkdir /data/web_static/shared/
-sudo -p mkdir /data/web_static/releases/test/
+sudo mkdir -p /data/
+sudo mkdir -p /data/web_static/
+sudo mkdir -p /data/web_static/releases/
+sudo mkdir -p /data/web_static/shared/
+sudo mkdir -p /data/web_static/releases/test/
 
 # Create html file
 # sudo echo "Hello Software Engineer :)" >>  /data/web_static/releases/test/index.html
