@@ -26,7 +26,7 @@ sudo echo "<html>
 </html>" | sudo tee /data/web_static/releases/test/index.html
 
 # Create a symbolic link
-sudo ln -s -f /data/web_static/releases/current  /data/web_static/releases/test/
+sudo ln -s -f /data/web_static/releases/test/ /data/web_static/current
 
 #Change ownership of data folder to ubuntu
 sudo chown -R ubuntu:ubuntu /data/
