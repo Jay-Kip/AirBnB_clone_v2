@@ -12,7 +12,6 @@ def do_pack():
     """
     Create a .tgz archive from the contents of the web_static folder.
     """
-
     time = datetime.now()
     ''' Create the archive name based on the current date and time'''
     archive = 'web_static_' + time.strftime("%Y%m%d%H%M%S") + '.' + 'tgz'
