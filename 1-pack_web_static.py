@@ -4,7 +4,7 @@ Fabric script to genereate tgz archive
 """
 
 import os
-from fabric.api import local
+from fabric.api import *
 from datetime import datetime
 
 
