@@ -5,7 +5,9 @@ from datetime import datetime
 
 
 def do_pack():
-    """Create a .tgz archive from the contents of the web_static folder."""
+    """
+    Create a .tgz archive from the contents of the web_static folder.
+    """
     try:
         """Create the versions folder if it doesn't exist"""
         if not os.path.exists("versions"):
