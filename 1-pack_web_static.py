@@ -14,9 +14,16 @@ def do_pack():
     """
 
     time = datetime.now()
+    ''' Create the archive name based on the current date and time'''
     archive = 'web_static_' + time.strftime("%Y%m%d%H%M%S") + '.' + 'tgz'
+
+    ''' Create versions folder if it doesnt already exist'''
     local('mkdir -p versions')
+
+    ''' Create the archive using the tar command'''
     create = local('tar -cvzf versions/{} web_static'.format(archive))
+
+    ''' Check if archive creation was successful'''
     if create is not None:
         return archive
     else:
