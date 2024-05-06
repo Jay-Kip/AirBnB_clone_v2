@@ -4,7 +4,7 @@ Fabric script to genereate tgz archive
 """
 
 import os
-from fabric.api import local
+from fabric.api import *
 from datetime import datetime
 
 
@@ -12,6 +12,7 @@ def do_pack():
     """
     Create a .tgz archive from the contents of the web_static folder.
     """
+
     try:
         """Create the versions folder if it doesn't exist"""
         if not os.path.exists("versions"):
@@ -25,7 +26,7 @@ def do_pack():
         archive_path = "versions/{}".format(archive_name)
 
         """Create the .tgz archive using the tar command"""
-        local("tar -czvf {} web_statiic".format(archive_path))
+        local("tar -czvf {} web_static".format(archive_path))
 
         """ Return the archive path if the archive has been generated"""
         if os.path.exists(archive_path):
