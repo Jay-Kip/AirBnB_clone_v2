@@ -1,21 +1,31 @@
 #!/usr/bin/python3
-
-from fabric import task
-from fabric import Connection
+import os
+from fabric.api import local
 from datetime import datetime
 
 
-@task   # This eniables the function to be executed remotely
-def do_pack(c):
-    ''' Create the versions folder if it does not exist'''
-    c.run('mkdir -p versions')
+def do_pack():
+    """Create a .tgz archive from the contents of the web_static folder."""
+    try:
+        """Create the versions folder if it doesn't exist"""
+        if not os.path.exists("versions"):
+            os.makedirs("versions")
 
-    # Generate timestamp for the archive name
-    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+        """ Generate the archive path"""
+        now = datetime.now()
+        archive_name = "web_static_{} {} {} {} {} {}.tgz".format{
+                now.year, now.month, now.day, now.hour, now.minute, now.second
+                }
+        archive_path = "versions/{}".format(archive_name)
 
-    # Create the archive file
-    archive_name = f'web_static_{timestamp}.tgz'
-    c.run(f'tar -czvf versions/{archive_name} web_static')
+        """Create the .tgz archive using the tar command"""
+        local("tar -czvf {} web_statiic".format(archive_path))
 
-    # Return the path of the generated archive
-    return f'version/{archive_name}'
+        """ Return the archive path if the archive has been generated"""
+        if os.path.exists(archive_path):
+            return archive_path
+
+    except Exception as e:
+        print("An error occured during archive creation:", str(e))
+
+    return None
