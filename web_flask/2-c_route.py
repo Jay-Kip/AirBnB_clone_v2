@@ -3,6 +3,7 @@
 display “C ” followed by the value of the text variable
 '''
 
+
 from flask import Flask
 
 app = Flask(__name__)
@@ -33,5 +34,5 @@ def c_route(text):
 
 
 if __name__ == "__main__":
-    strict_slashes=False
+    strict_slashes = False
     app.run(host='0.0.0.0', port=5000)
