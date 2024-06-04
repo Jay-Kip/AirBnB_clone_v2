@@ -7,12 +7,14 @@ from flask import Flask
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
     '''
     Route to home page
     '''
     return "Hello HBNB!"
+
 
 @app.route('/hbnb')
 def hnbn():
@@ -21,12 +23,14 @@ def hnbn():
     '''
     return "HBNB"
 
+
 @app.route('/c/<text>')
 def c_route(text):
     ''''
     Route to c page
     '''
     return f"C {text.replace('_', ' ')}"
+
 
 if __name__ == "__main__":
     strict_slashes=False
