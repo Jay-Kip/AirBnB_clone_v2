@@ -45,7 +45,7 @@ def number_route(n):
     '''
     Number route
     '''
-    return f"{n} is a number : )"
+    return f"{n} is a number"
 
 
 @app.route('/number_template/<int:n>')
