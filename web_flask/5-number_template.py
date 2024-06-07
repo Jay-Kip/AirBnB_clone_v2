@@ -31,7 +31,6 @@ def c_route(text):
     return f"C {text.replace('_', ' ')}"
 
 
-
 @app.route('/python/', defaults={'text': 'is cool'})
 @app.route('/python/<text>')
 def python_route(text):
@@ -39,7 +38,6 @@ def python_route(text):
     Python route
     '''
     return f"Python {text.replace('_', ' ')}"
-
 
 
 @app.route('/number/<int:n>')
